@@ -2,3 +2,7 @@
 
 #include "SlAiMenurController.h"
 
+ASlAiMenurController::ASlAiMenurController()
+{
+	bShowMouseCursor = true;
+}

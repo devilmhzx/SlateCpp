@@ -14,5 +14,8 @@ class SLATECPP_API ASlAiMenurController : public APlayerController
 {
 	GENERATED_BODY()
 	
-		
+public:
+	ASlAiMenurController();
+
+	
 };
