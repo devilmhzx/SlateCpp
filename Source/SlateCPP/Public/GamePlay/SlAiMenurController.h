@@ -7,15 +7,16 @@
 #include "SlAiMenurController.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class SLATECPP_API ASlAiMenurController : public APlayerController
 {
 	GENERATED_BODY()
-	
+
 public:
 	ASlAiMenurController();
 
-	
+protected:
+	virtual void BeginPlay() override;
 };

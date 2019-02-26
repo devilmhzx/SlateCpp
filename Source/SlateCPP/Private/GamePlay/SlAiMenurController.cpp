@@ -6,3 +6,12 @@ ASlAiMenurController::ASlAiMenurController()
 {
 	bShowMouseCursor = true;
 }
+
+void ASlAiMenurController::BeginPlay()
+{
+	Super::BeginPlay();
+
+	FInputModeUIOnly InputMode;
+	InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::LockAlways);
+	SetInputMode(InputMode);
+}

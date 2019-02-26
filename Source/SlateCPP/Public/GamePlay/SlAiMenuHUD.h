@@ -13,5 +13,10 @@ UCLASS()
 class SLATECPP_API ASlAiMenuHUD : public AHUD
 {
 	GENERATED_BODY()
+
+public:
+	ASlAiMenuHUD();
+
+	TSharedPtr<class SSlAiMenuHUDWidget> MenuHUDWidget;
 	
 };
