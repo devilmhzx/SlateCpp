@@ -26,8 +26,21 @@ struct SLATECPP_API FSlAiMenuStyle : public FSlateWidgetStyle
 	virtual const FName GetTypeName() const override { return TypeName; };
 	static const FSlAiMenuStyle& GetDefault();
 
+	//窗口背景图片
 	UPROPERTY(EditAnywhere, Category = MenuHUD)
 		FSlateBrush MenuHUDBackgroundBrush;
+	//指定Menu背景图片
+	UPROPERTY(EditAnywhere, Category = MenuHUD)
+		FSlateBrush MenuBackgroundBrush;
+	//Menu左图标的Brush
+	UPROPERTY(EditAnywhere, Category = MenuHUD)
+		FSlateBrush LeftIconBrush;
+	//Menu右图标的Brush
+	UPROPERTY(EditAnywhere, Category = MenuHUD)
+		FSlateBrush RightIconBrush;
+	//Menu标题Border的Brush
+	UPROPERTY(EditAnywhere, Category = MenuHUD)
+		FSlateBrush TileBorderBrush;
 };
 
 /**
