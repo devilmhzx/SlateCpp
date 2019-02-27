@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Widgets/SCompoundWidget.h"
+#include "SlAiTypes.h"
+
 
 /**
  * 
@@ -19,6 +21,11 @@ public:
 	void Construct(const FArguments& InArgs);
 
 private:
+	//绑定到各个MenuItem的方法
+	void MenuItemOnClicked(EMenuItem::Type ItemType);
+
+
+private:
 	//保存根节点
 	TSharedPtr<class SBox> RootSizeBox;
 
@@ -27,5 +34,8 @@ private:
 
 	//保存标题
 	TSharedPtr<class STextBlock> TitelText;
+
+	//保存垂直列表
+	TSharedPtr<class SVerticalBox> ContentBox;
 
 };

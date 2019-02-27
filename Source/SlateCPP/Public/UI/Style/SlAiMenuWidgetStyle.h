@@ -41,6 +41,21 @@ struct SLATECPP_API FSlAiMenuStyle : public FSlateWidgetStyle
 	//Menu标题Border的Brush
 	UPROPERTY(EditAnywhere, Category = MenuHUD)
 		FSlateBrush TileBorderBrush;
+	//MenuItem的Brush
+	UPROPERTY(EditAnywhere, Category = MenuHUD)
+		FSlateBrush MenuItemBrush;
+
+	//60号字体
+	UPROPERTY(EditAnywhere,Category = Common)
+		FSlateFontInfo Font_60;
+	//40号字体
+	UPROPERTY(EditAnywhere,Category = Common)
+		FSlateFontInfo Font_40;
+	//30号字体
+	UPROPERTY(EditAnywhere,Category = Common)
+		FSlateFontInfo Font_30;
+
+
 };
 
 /**

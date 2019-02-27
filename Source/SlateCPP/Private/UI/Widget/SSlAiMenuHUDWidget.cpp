@@ -8,7 +8,7 @@
 #include "SlAiMenuWidgetStyle.h"
 #include <SOverlay.h>
 #include <SDPIScaler.h>
-#include "../../../Public/GamePlay/UI/Widget/SSlAiMenuWidget.h"
+#include "SSlAiMenuWidget.h"
 
 
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
