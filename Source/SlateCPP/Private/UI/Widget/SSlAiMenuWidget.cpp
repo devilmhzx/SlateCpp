@@ -10,6 +10,8 @@
 #include <SBoxPanel.h>
 #include "SSlAiMenuItemWidget.h"
 #include "SlAiTypes.h"
+#include "Common/SlAiHelper.h"
+#include "SSlAiGameOptionWidget.h"
 
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SSlAiMenuWidget::Construct(const FArguments& InArgs)
@@ -85,15 +87,17 @@ void SSlAiMenuWidget::Construct(const FArguments& InArgs)
 	//¼ÓÔØ±ðµÄwidget
 	ContentBox->AddSlot()
 		[
-			SNew(SSlAiMenuItemWidget)
-			.ItemText(NSLOCTEXT("SlAiMenu", "StartGame", "StartGame"))
-			.ItemType(EMenuItem::StartGame)
-			.OnClicked(this,&SSlAiMenuWidget::MenuItemOnClicked)
+			//SNew(SSlAiMenuItemWidget)
+			//.ItemText(NSLOCTEXT("SlAiMenu", "StartGame", "StartGame"))
+			//.ItemType(EMenuItem::StartGame)
+			//.OnClicked(this,&SSlAiMenuWidget::MenuItemOnClicked)
+			SNew(SSlAiGameOptionWidget)
 		];
 }
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION
 
 void SSlAiMenuWidget::MenuItemOnClicked(EMenuItem::Type ItemType)
 {
-	TitelText->SetText(NSLOCTEXT("SlAiMenu", "StartGame", "StartGame"));
+	//TitelText->SetText(NSLOCTEXT("SlAiMenu", "StartGame", "StartGame"));
+	//SlAiHelper::Debug(TEXT("HHHHH"));
 }

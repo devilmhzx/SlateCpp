@@ -46,16 +46,42 @@ struct SLATECPP_API FSlAiMenuStyle : public FSlateWidgetStyle
 		FSlateBrush MenuItemBrush;
 
 	//60号字体
-	UPROPERTY(EditAnywhere,Category = Common)
+	UPROPERTY(EditAnywhere, Category = Common)
 		FSlateFontInfo Font_60;
 	//40号字体
-	UPROPERTY(EditAnywhere,Category = Common)
+	UPROPERTY(EditAnywhere, Category = Common)
 		FSlateFontInfo Font_40;
 	//30号字体
-	UPROPERTY(EditAnywhere,Category = Common)
+	UPROPERTY(EditAnywhere, Category = Common)
 		FSlateFontInfo Font_30;
 
+	//GameSet的背景
+	UPROPERTY(EditAnywhere, Category = GameOption)
+		FSlateBrush GameOptionBGBrush;
 
+	//黑色
+	UPROPERTY(EditAnywhere, Category = Common)
+		FLinearColor FontColor_Black;
+
+	//白色
+	UPROPERTY(EditAnywhere, Category = Common)
+		FLinearColor FontColor_White;
+
+	//CheckBox的Brush被选中
+	UPROPERTY(EditAnywhere, Category = GameOption)
+		FSlateBrush CheckdBoxBrush;
+
+	//CheckBox的Brush未被选中
+	UPROPERTY(EditAnywhere, Category = GameOption)
+		FSlateBrush UnCheckdBoxBrush;
+
+	//Slider的背景Brush
+	UPROPERTY(EditAnywhere, Category = GameOption)
+		FSlateBrush SliderBarBrush;
+
+	//指定Slider的样式
+	UPROPERTY(EditAnywhere, Category = GameOption)
+		FSliderStyle SliderStyle;
 };
 
 /**
