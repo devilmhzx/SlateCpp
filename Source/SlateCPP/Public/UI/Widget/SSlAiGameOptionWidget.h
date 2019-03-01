@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Widgets/SCompoundWidget.h"
+#include "SlAiTypes.h"
+
 
 /**
  * 游戏设置界面
@@ -12,15 +14,26 @@
 class SCheckBox;
 class SSlider;
 
+//修改中英文委托
+DECLARE_DELEGATE_OneParam(FChangeCulture, const ECultureTeam)
+//修改音量委托
+DECLARE_DELEGATE_TwoParams(FChangeVolume, const float, const float)
+
 class SLATECPP_API SSlAiGameOptionWidget : public SCompoundWidget
 {
 public:
 	SLATE_BEGIN_ARGS(SSlAiGameOptionWidget)
 	{}
-	SLATE_END_ARGS()
 
-	/** Constructs this widget with InArgs */
-	void Construct(const FArguments& InArgs);
+	//添加事件
+	SLATE_EVENT(FChangeCulture, ChangeCulture)
+
+	SLATE_EVENT(FChangeVolume, ChangeVolume)
+
+		SLATE_END_ARGS()
+
+		/** Constructs this widget with InArgs */
+		void Construct(const FArguments& InArgs);
 
 private:
 	//中文CheckBox事件
@@ -49,4 +62,8 @@ private:
 	//进度条百分比
 	TSharedPtr<STextBlock> MuTextBlock;
 	TSharedPtr<STextBlock> SoTextBlock;
+public:
+	//委托变量
+	FChangeCulture ChangeCulture;
+	FChangeVolume ChangeVolume;
 };

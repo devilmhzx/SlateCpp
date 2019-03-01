@@ -10,6 +10,10 @@ SlAiDataHandle::SlAiDataHandle()
 {
 	//初始化
 	CurrentCulture = ECultureTeam::ZH;
+	//初始化音量
+	MusicVolume = 0.5f;
+	SoundVolume = 0.5f;
+
 }
 
 void SlAiDataHandle::Initialize()
@@ -43,8 +47,43 @@ void SlAiDataHandle::ChangeLocalizationCulture(ECultureTeam Culture)
 	CurrentCulture = Culture;
 }
 
+void SlAiDataHandle::ResetMenuVolume(float MusicVol, float SoundVol)
+{
+	if (MusicVol > 0)
+	{
+		MusicVolume = MusicVol;
+	}
+	if (SoundVol > 0)
+	{
+		SoundVolume = SoundVol;
+	}
+}
+
 TSharedPtr<SlAiDataHandle> SlAiDataHandle::Create()
 {
 	TSharedRef<SlAiDataHandle> DataRef = MakeShareable(new SlAiDataHandle());
 	return DataRef;
 }
+
+template<typename TEnum>
+FString SlAiDataHandle::GetEnumValueAsString(const FString& Name, TEnum Value)
+{
+	const UEnum* EnumPtr = FindObject<UEnum>(ANY_PACKAGE, *Name, true);
+	if (!EnumPtr)
+	{
+		return FString("InValid");
+	}
+	return EnumPtr->GetEnumName((int32)Value);
+}
+
+template<typename TEnum>
+TEnum SlAiDataHandle::GetEnumValueFromString(const FString& Name, FString Value)
+{
+	const UEnum* EnumPtr = FindObject<UEnum>(ANY_PACKAGE, *Name, true);
+	if (!EnumPtr)
+	{
+		return TEnum(0);
+	}
+	return (TEnum)EnumPtr->GetIndexByName(FName(*FString(Value)));
+}
+

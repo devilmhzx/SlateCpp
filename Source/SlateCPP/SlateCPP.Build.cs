@@ -14,7 +14,9 @@ public class SlateCPP : ModuleRules
             "Engine",
             "InputCore",
             "Slate",
-            "SlateCore"
+            "SlateCore",
+            "Json",
+            "JsonUtilities"
         });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });

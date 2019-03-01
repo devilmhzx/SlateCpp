@@ -7,14 +7,19 @@
 #include "SlAiTypes.h"
 
 
+
+
 /**
- * 
+ * 主UI
  */
 class SLATECPP_API SSlAiMenuWidget : public SCompoundWidget
 {
 public:
 	SLATE_BEGIN_ARGS(SSlAiMenuWidget)
 	{}
+
+
+
 	SLATE_END_ARGS()
 
 	/** Constructs this widget with InArgs */
@@ -24,6 +29,11 @@ private:
 	//绑定到各个MenuItem的方法
 	void MenuItemOnClicked(EMenuItem::Type ItemType);
 
+	//修改语言
+	void ChangeCulture(ECultureTeam Culture);
+
+	//修改音量
+	void ChangeVolume(const float MusciVolume, const float SoundVolume);
 
 private:
 	//保存根节点
@@ -37,5 +47,6 @@ private:
 
 	//保存垂直列表
 	TSharedPtr<class SVerticalBox> ContentBox;
+
 
 };
