@@ -29,6 +29,8 @@ public:
 	//音量
 	float MusicVolume;
 	float SoundVolume;
+	//存档数据
+	TArray<FString> RecordDataList;
 
 private:
 	//创建单例
@@ -41,6 +43,9 @@ private:
 	//根据字符串来获取Enum值
 	template<typename TEnum>
 	TEnum GetEnumValueFromString(const FString& Name,FString Value);
+
+	//初始化存档数据
+	void InitRecordData();
 
 private:
 

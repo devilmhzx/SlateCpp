@@ -2,6 +2,10 @@
 
 #include "SlAiDataHandle.h"
 #include <Internationalization.h>
+#include "SlAiSingleton.h"
+#include "SlAiJsonHandle.h"
+#include "SlAiHelper.h"
+
 
 TSharedPtr<SlAiDataHandle> SlAiDataHandle::DataInstance = nullptr;
 
@@ -9,10 +13,12 @@ TSharedPtr<SlAiDataHandle> SlAiDataHandle::DataInstance = nullptr;
 SlAiDataHandle::SlAiDataHandle()
 {
 	//初始化
-	CurrentCulture = ECultureTeam::ZH;
+	//CurrentCulture = ECultureTeam::ZH;
 	//初始化音量
-	MusicVolume = 0.5f;
-	SoundVolume = 0.5f;
+	//MusicVolume = 0.5f;
+	//SoundVolume = 0.5f;
+	//初始化存档数据
+	InitRecordData();
 
 }
 
@@ -45,6 +51,9 @@ void SlAiDataHandle::ChangeLocalizationCulture(ECultureTeam Culture)
 	}
 	//赋值
 	CurrentCulture = Culture;
+	//更新存档数据
+	SlAiSingleton<SlAiJsonHandle>::Get()->UpdateRecordData(GetEnumValueAsString<ECultureTeam>(FString("ECultureTeam"), CurrentCulture), MusicVolume, SoundVolume, &RecordDataList);
+
 }
 
 void SlAiDataHandle::ResetMenuVolume(float MusicVol, float SoundVol)
@@ -57,6 +66,9 @@ void SlAiDataHandle::ResetMenuVolume(float MusicVol, float SoundVol)
 	{
 		SoundVolume = SoundVol;
 	}
+	//更新存档数据
+	SlAiSingleton<SlAiJsonHandle>::Get()->UpdateRecordData(GetEnumValueAsString<ECultureTeam>(FString("ECultureTeam"), CurrentCulture), MusicVolume, SoundVolume, &RecordDataList);
+
 }
 
 TSharedPtr<SlAiDataHandle> SlAiDataHandle::Create()
@@ -73,7 +85,7 @@ FString SlAiDataHandle::GetEnumValueAsString(const FString& Name, TEnum Value)
 	{
 		return FString("InValid");
 	}
-	return EnumPtr->GetEnumName((int32)Value);
+	return EnumPtr->GetNameStringByIndex((int32)Value);
 }
 
 template<typename TEnum>
@@ -85,5 +97,15 @@ TEnum SlAiDataHandle::GetEnumValueFromString(const FString& Name, FString Value)
 		return TEnum(0);
 	}
 	return (TEnum)EnumPtr->GetIndexByName(FName(*FString(Value)));
+}
+
+void SlAiDataHandle::InitRecordData()
+{
+	//获取语言
+	FString Culture;
+	//读取存档数据
+	SlAiSingleton<SlAiJsonHandle>::Get()->RecordDataJsonRead(Culture, MusicVolume, SoundVolume, RecordDataList);
+	//初始化语言
+	ChangeLocalizationCulture(GetEnumValueFromString<ECultureTeam>(FString("ECultureTeam"), Culture));
 }
 
