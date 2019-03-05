@@ -9,6 +9,7 @@
 
 
 
+
 /**
  * 主UI
  */
@@ -22,8 +23,8 @@ public:
 
 	SLATE_END_ARGS()
 
-	/** Constructs this widget with InArgs */
-	void Construct(const FArguments& InArgs);
+		/** Constructs this widget with InArgs */
+		void Construct(const FArguments& InArgs);
 
 private:
 	//绑定到各个MenuItem的方法
@@ -35,6 +36,15 @@ private:
 	//修改音量
 	void ChangeVolume(const float MusciVolume, const float SoundVolume);
 
+	//初始化所有的控件
+	void InitalizedMenuList();
+
+	//选择显示的界面
+	void ChooseWidget(EMenuType::Type WidgetType);
+
+	//修改菜单的大小
+	void ResetWidgetSize(float NewWidget, float NewHeight);
+
 private:
 	//保存根节点
 	TSharedPtr<class SBox> RootSizeBox;
@@ -43,10 +53,17 @@ private:
 	const struct  FSlAiMenuStyle* MenuStyle;
 
 	//保存标题
-	TSharedPtr<class STextBlock> TitelText;
+	TSharedPtr<class STextBlock> TitleText;
 
 	//保存垂直列表
 	TSharedPtr<class SVerticalBox> ContentBox;
 
-
+	//保存菜单组
+	TMap<EMenuType::Type, TSharedPtr<struct MenuGroup>> MenuMap;
+	//游戏设置Widget的指针
+	TSharedPtr<class SSlAiGameOptionWidget> GameOptionWidget;
+	//新游戏控件指针
+	TSharedPtr<class SSlAiNewGameWidget> NewGameWidget;
+	//选择存档控件指针
+	TSharedPtr<class SSlAiChooseRecordWidget> ChooseRecordWidget;
 };
