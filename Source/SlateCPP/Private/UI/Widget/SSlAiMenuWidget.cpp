@@ -50,7 +50,7 @@ void SSlAiMenuWidget::Construct(const FArguments& InArgs)
 	//获取MenuStyle
 	MenuStyle = &SlAiStyle::Get().GetWidgetStyle<FSlAiMenuStyle>("BPSlAiMenuStyle");
 	//播放背景音乐
-	//FSlateApplication::Get().PlaySound(MenuStyle->MenuBackgroundMusic);
+	FSlateApplication::Get().PlaySound(MenuStyle->MenuBackGroundMusic);
 
 
 	ChildSlot
@@ -193,7 +193,7 @@ void SSlAiMenuWidget::MenuItemOnClicked(EMenuItem::Type ItemType)
 		break;
 	case EMenuItem::QuitGame:
 		//退出游戏,播放声音并且延时调用退出函数
-		//SlAiHelper::PlayerSoundAndCall(UGameplayStatics::GetPlayerController(GWorld, 0)->GetWorld(), MenuStyle->ExitGameSound, this, &SSlAiMenuWidget::QuitGame);
+		SlAiHelper::PlayerSoundAndCall(UGameplayStatics::GetPlayerController(GWorld, 0)->GetWorld(), MenuStyle->ExitGameSound, this, &SSlAiMenuWidget::QuitGame);
 		break;
 	case EMenuItem::NewGame:
 		PlayClose(EMenuType::NewGame);
@@ -217,7 +217,7 @@ void SSlAiMenuWidget::MenuItemOnClicked(EMenuItem::Type ItemType)
 		//检测是否可以进入游戏
 		if (NewGameWidget->AllowEnterGame())
 		{
-			//SlAiHelper::PlayerSoundAndCall(UGameplayStatics::GetPlayerController(GWorld, 0)->GetWorld(), MenuStyle->StartGameSound, this, &SSlAiMenuWidget::EnterGame);
+			SlAiHelper::PlayerSoundAndCall(UGameplayStatics::GetPlayerController(GWorld, 0)->GetWorld(), MenuStyle->StartGameSound, this, &SSlAiMenuWidget::EnterGame);
 		}
 		else
 		{
@@ -228,7 +228,7 @@ void SSlAiMenuWidget::MenuItemOnClicked(EMenuItem::Type ItemType)
 	case EMenuItem::EnterRecord:
 		//告诉选择存档更新存档名
 		ChooseRecordWidget->UpdateRecordName();
-		//SlAiHelper::PlayerSoundAndCall(UGameplayStatics::GetPlayerController(GWorld, 0)->GetWorld(), MenuStyle->StartGameSound, this, &SSlAiMenuWidget::EnterGame);
+		SlAiHelper::PlayerSoundAndCall(UGameplayStatics::GetPlayerController(GWorld, 0)->GetWorld(), MenuStyle->StartGameSound, this, &SSlAiMenuWidget::EnterGame);
 		break;
 	}
 }
@@ -353,7 +353,7 @@ void SSlAiMenuWidget::PlayClose(EMenuType::Type NewMenu)
 	//播放反向动画
 	MenuAnimation.PlayReverse(this->AsShared());
 	//播放切换菜单音乐
-	//FSlateApplication::Get().PlaySound(MenuStyle->MenuItemChangeSound);
+	FSlateApplication::Get().PlaySound(MenuStyle->MenuItemChangeSound);
 }
 
 void SSlAiMenuWidget::QuitGame()
@@ -363,5 +363,5 @@ void SSlAiMenuWidget::QuitGame()
 
 void SSlAiMenuWidget::EnterGame()
 {
-	UGameplayStatics::OpenLevel(UGameplayStatics::GetPlayerController(GWorld, 0)->GetWorld(), FName("GameMap"));
+	//UGameplayStatics::OpenLevel(UGameplayStatics::GetPlayerController(GWorld, 0)->GetWorld(), FName("GameMap"));
 }

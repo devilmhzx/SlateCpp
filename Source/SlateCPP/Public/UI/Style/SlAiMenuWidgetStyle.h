@@ -6,6 +6,7 @@
 #include "Styling/SlateWidgetStyle.h"
 #include "SlateWidgetStyleContainerBase.h"
 #include <SlateBrush.h>
+#include <SlateSound.h>
 
 #include "SlAiMenuWidgetStyle.generated.h"
 
@@ -82,6 +83,22 @@ struct SLATECPP_API FSlAiMenuStyle : public FSlateWidgetStyle
 	//指定Slider的样式
 	UPROPERTY(EditAnywhere, Category = GameOption)
 		FSliderStyle SliderStyle;
+
+	//开始游戏声音
+	UPROPERTY(EditAnywhere, Category = Sound)
+		FSlateSound StartGameSound;
+
+	//结束游戏声音
+	UPROPERTY(EditAnywhere, Category = Sound)
+		FSlateSound ExitGameSound;
+
+	//转换按钮声音
+	UPROPERTY(EditAnywhere, Category = Sound)
+		FSlateSound MenuItemChangeSound;
+
+	//Menu背景声音
+	UPROPERTY(EditAnywhere, Category = Sound)
+		FSlateSound MenuBackGroundMusic;
 };
 
 /**
