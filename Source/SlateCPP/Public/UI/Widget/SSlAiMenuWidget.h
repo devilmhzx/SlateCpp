@@ -8,7 +8,13 @@
 
 
 
-
+class SBox;
+class STextBlock;
+class SVerticalBox;
+struct MenuGroup;
+class SSlAiGameOptionWidget;
+class SSlAiNewGameWidget;
+class SSlAiChooseRecordWidget;
 
 /**
  * 主UI
@@ -22,48 +28,68 @@ public:
 
 
 	SLATE_END_ARGS()
-
 		/** Constructs this widget with InArgs */
 		void Construct(const FArguments& InArgs);
 
+	//重写tick函数
+	virtual void Tick(const FGeometry& AllottedGeometry, const double InCurrentTime, const float InDeltaTime) override;
+
+
 private:
+
 	//绑定到各个MenuItem的方法
 	void MenuItemOnClicked(EMenuItem::Type ItemType);
-
 	//修改语言
 	void ChangeCulture(ECultureTeam Culture);
-
 	//修改音量
-	void ChangeVolume(const float MusciVolume, const float SoundVolume);
-
+	void ChangeVolume(const float MusicVolume, const float SoundVolume);
 	//初始化所有的控件
-	void InitalizedMenuList();
-
+	void InitializedMenuList();
 	//选择显示的界面
 	void ChooseWidget(EMenuType::Type WidgetType);
-
 	//修改菜单的大小
 	void ResetWidgetSize(float NewWidget, float NewHeight);
+	//初始化动画组件
+	void InitializedAnimation();
+	//播放关闭动画
+	void PlayClose(EMenuType::Type NewMenu);
+	//退出游戏
+	void QuitGame();
+	//进入游戏
+	void EnterGame();
+
 
 private:
-	//保存根节点
-	TSharedPtr<class SBox> RootSizeBox;
 
+	//保存根节点的
+	TSharedPtr<SBox> RootSizeBox;
 	//获取MenuStyle
-	const struct  FSlAiMenuStyle* MenuStyle;
-
+	const struct FSlAiMenuStyle *MenuStyle;
 	//保存标题
-	TSharedPtr<class STextBlock> TitleText;
-
-	//保存垂直列表
-	TSharedPtr<class SVerticalBox> ContentBox;
-
+	TSharedPtr<STextBlock> TitleText;
+	//用来保存垂直列表
+	TSharedPtr<SVerticalBox> ContentBox;
 	//保存菜单组
-	TMap<EMenuType::Type, TSharedPtr<struct MenuGroup>> MenuMap;
-	//游戏设置Widget的指针
-	TSharedPtr<class SSlAiGameOptionWidget> GameOptionWidget;
+	TMap<EMenuType::Type, TSharedPtr<MenuGroup>> MenuMap;
+	//游戏设置Widget的指引
+	TSharedPtr<SSlAiGameOptionWidget> GameOptionWidget;
 	//新游戏控件指针
-	TSharedPtr<class SSlAiNewGameWidget> NewGameWidget;
+	TSharedPtr<SSlAiNewGameWidget> NewGameWidget;
 	//选择存档控件指针
-	TSharedPtr<class SSlAiChooseRecordWidget> ChooseRecordWidget;
+	TSharedPtr<SSlAiChooseRecordWidget> ChooseRecordWidget;
+
+	//动画播放器
+	FCurveSequence MenuAnimation;
+	//曲线控制器
+	FCurveHandle MenuCurve;
+	//用来保存新的高度
+	float CurrentHeight;
+	//是否已经显示Menu组件
+	bool IsMenuShow;
+	//是否锁住按钮
+	bool ControlLocked;
+	//保存当前的动画状态
+	EMenuAnim::Type AnimState;
+	//保存当前的菜单
+	EMenuType::Type CurrentMenu;
 };

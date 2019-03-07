@@ -56,7 +56,7 @@ void SSlAiNewGameWidget::Construct(const FArguments& InArgs)
 		.HeightOverride(60.f)
 		[
 			SAssignNew(EditTextBox, SEditableTextBox)
-			.HintText(NSLOCTEXT("SlAiMenu", "RecordNameHint", "RecordNameHint"))	//输入框提示语
+			.HintText(NSLOCTEXT("SlAiMenu", "RecordNameHint", "Input Record Name!"))	//输入框提示语
 		.Font(MenuStyle->Font_30)
 		]
 		]

@@ -76,6 +76,6 @@ void SSlAiMenuItemWidget::OnMouseLeave(const FPointerEvent& MouseEvent)
 
 FSlateColor SSlAiMenuItemWidget::GetTintColor() const
 {
-	if (IsMouseButtonDown) return FLinearColor(1.f, 0.f, 0.0f, 0.5f);
+	if (IsMouseButtonDown) return FLinearColor(1.f, 0.1f, 0.1f, 0.5f);
 	return FLinearColor(1.F, 1.F, 1.f, 1.f);
 }

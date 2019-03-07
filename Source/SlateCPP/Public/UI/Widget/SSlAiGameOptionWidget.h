@@ -13,6 +13,7 @@
 
 class SCheckBox;
 class SSlider;
+class STextBlock;
 
 //修改中英文委托
 DECLARE_DELEGATE_OneParam(FChangeCulture, const ECultureTeam)

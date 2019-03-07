@@ -87,14 +87,14 @@ void SlAiJsonHandle::UpdateRecordData(FString Culture, float MusicVolume, float 
 	GetFStringInJsonData(JSonObject, JsonStr);
 
 	//修改前输出测试
-	SlAiHelper::Debug(FString("Origin Str:" + JsonStr), 60.f);
+	//SlAiHelper::Debug(FString("Origin Str:" + JsonStr), 60.f);
 
 	//去掉多余字符
 	JsonStr.RemoveAt(0, 8);
 	JsonStr.RemoveFromEnd(FString("}"));
 
 	//修改后输出测试
-	SlAiHelper::Debug(FString("Final Str:" + JsonStr), 60.f);
+	//SlAiHelper::Debug(FString("Final Str:" + JsonStr), 60.f);
 
 	//写入文件
 	WriteFileWithJsonData(JsonStr, RelativePath, RecordDataFileName);

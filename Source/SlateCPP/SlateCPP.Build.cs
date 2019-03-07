@@ -16,7 +16,11 @@ public class SlateCPP : ModuleRules
             "Slate",
             "SlateCore",
             "Json",
-            "JsonUtilities"
+            "JsonUtilities",
+            "UMG",
+            "AIModule",
+            "GameplayTasks",
+            "NavigationSystem",
         });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
