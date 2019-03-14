@@ -3,6 +3,8 @@
 #include "SIAiMenuGameMode.h"
 #include "SlAiMenurController.h"
 #include "SlAiMenuHUD.h"
+#include "SlAiGameInstance.h"
+#include <Kismet/GameplayStatics.h>
 
 ASIAiMenuGameMode::ASIAiMenuGameMode()
 {
@@ -14,4 +16,6 @@ ASIAiMenuGameMode::ASIAiMenuGameMode()
 void ASIAiMenuGameMode::BeginPlay()
 {
 	Super::BeginPlay();
+
+	Cast<USlAiGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()))->GameName = FString("SlateCpp");
 }

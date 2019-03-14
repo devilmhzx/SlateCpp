@@ -363,5 +363,5 @@ void SSlAiMenuWidget::QuitGame()
 
 void SSlAiMenuWidget::EnterGame()
 {
-	//UGameplayStatics::OpenLevel(UGameplayStatics::GetPlayerController(GWorld, 0)->GetWorld(), FName("GameMap"));
+	UGameplayStatics::OpenLevel(UGameplayStatics::GetPlayerController(GWorld, 0)->GetWorld(), FName("GameMap"));
 }
